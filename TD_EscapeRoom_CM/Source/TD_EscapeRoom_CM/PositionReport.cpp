@@ -23,7 +23,10 @@ void UPositionReport::BeginPlay()
 	Super::BeginPlay();
 
 	FString Name = GetOwner()->GetName();
-	UE_LOG(LogTemp, Warning, TEXT("Position Report reporting %s"), *Name);
+	FString ObjectPosition = GetOwner()->GetTransform().GetLocation().ToString();
+	FString ObjectRotation = GetOwner()->GetTransform().GetRotation().ToString();
+	FString ObjectScale = GetOwner()->GetTransform().GetScale3D().ToString();
+	UE_LOG(LogTemp, Warning, TEXT("%s is at %s, rotation : %s and scale = %s"), *Name, *ObjectPosition, *ObjectRotation, *ObjectScale);
 	// ...
 	
 }
